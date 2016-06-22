@@ -1,0 +1,23 @@
+:Version: 1.0.0
+:Web: http://drf_mfa.readthedocs.org/
+:Download: http://pypi.python.org/pypi/drf_mfa
+:Source: http://github.com/robinhood/drf-mfa
+:Keywords: authentication, two-factor, multifactor
+
+About
+=====
+
+Multifactor Authentication provides multifactor authentication integration for
+the Django Rest Framework. It integrates with Token Authentication built into
+DRF and OAuth2 provided by django-oauth-toolkit_.
+
+What is Multifactor Authentication?
+====================================
+
+Multifactor Authentication (MFA) is a security system that requires more than
+one method of authentication from independent categories of credentials to
+verify the user's identity for a login or other transaction.
+(Source: SearchSecurity_)
+
+.. _django-oauth-toolkit: https://django-oauth-toolkit.readthedocs.io/
+.. _SearchSecurity: http://searchsecurity.techtarget.com/definition/multifactor-authentication-MFA
