@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from oauth2_provider.oauth2_validators import OAuth2Validator
 
+from django.contrib.auth import authenticate
 from django.utils.encoding import force_text
 
 from drf_mfa import strings
@@ -24,7 +25,7 @@ class MFAOAuth2Validator(OAuth2Validator):
     def validate_user(
             self, username, password, client, request, *args, **kwargs):
         """
-        Extends the OAuth2Validator validate method to implement multi factor
+        Overrides the OAuth2Validator validate method to implement multi factor
         authentication.
 
         If MFA is disabled, authentication requires just a username and
@@ -46,15 +47,15 @@ class MFAOAuth2Validator(OAuth2Validator):
             password. This exception will prompt the OAuth2 system to send a
             response asking the user to supply an MFA code.
         """
-        base_validation = super(MFAOAuth2Validator, self).validate_user(
-            username, password, client, request, *args, **kwargs)
-        if not base_validation:
+
+        user = authenticate(username=username, password=password)
+        if not (user and user.is_active):
             raise InvalidLoginError(force_text(
                 strings.INVALID_CREDENTIALS_ERROR))
 
         mfa = None
-        if hasattr(request.user, "multi_factor_auth"):
-            mfa = request.user.multi_factor_auth
+        if hasattr(user, "multi_factor_auth"):
+            mfa = user.multi_factor_auth
 
         if mfa and mfa.enabled:
             mfa_code = request.extra_credentials.get("mfa_code")
@@ -75,4 +76,5 @@ class MFAOAuth2Validator(OAuth2Validator):
                 challenge = MultiFactorChallenge(mfa, mfa.challenge_type)
                 challenge.generate_challenge()
                 raise ChallengeRequiredMessage(mfa.challenge_type)
+        request.user = user
         return True
