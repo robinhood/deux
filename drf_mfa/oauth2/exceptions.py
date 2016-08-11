@@ -17,6 +17,7 @@ class InvalidLoginError(OAuth2Error):
 
         :param error_msg: The error message describing this exception.
         """
+        super(OAuth2Error, self).__init__()
         self.error_msg = error_msg
 
     @property
@@ -45,6 +46,7 @@ class ChallengeRequiredMessage(OAuth2Error):
 
         :param challenge_type: The challenge type the user should expect.
         """
+        super(OAuth2Error, self).__init__()
         self.challenge_type = challenge_type
 
     @property
