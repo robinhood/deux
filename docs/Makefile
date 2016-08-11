@@ -49,7 +49,6 @@ help:
 	@echo "  coverage   to run coverage check of the documentation (if enabled)"
 	@echo "  apicheck   to verify that all modules are present in autodoc"
 	@echo "  configcheck to verify that all modules are present in autodoc"
-	@echo "  spelling   to spell check your documentation"
 
 .PHONY: clean
 clean:
@@ -232,7 +231,3 @@ pseudoxml:
 	$(SPHINXBUILD) -b pseudoxml $(ALLSPHINXOPTS) $(BUILDDIR)/pseudoxml
 	@echo
 	@echo "Build finished. The pseudo-XML files are in $(BUILDDIR)/pseudoxml."
-
-.PHONY: spelling
-spelling:
-	SPELLCHECK=1 $(SPHINXBUILD) -b spelling $(ALLSPHINXOPTS) $(BUILDDIR)/spelling

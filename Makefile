@@ -26,7 +26,6 @@ help:
 	@echo "  lint ------------  - Check codebase for problems."
 	@echo "    apicheck         - Check API reference coverage."
 	@echo "    configcheck      - Check configuration reference coverage."
-	@echo "	   spellcheck       - Check spelling for documentation"
 	@echo "    readmecheck      - Check README.rst encoding."
 	@echo "    flakes --------  - Check code for syntax and style errors."
 	@echo "      flakecheck     - Run flake8 on the source code."
@@ -52,16 +51,13 @@ docs: Documentation
 clean-docs:
 	-rm -rf "$(SPHINX_BUILDDIR)"
 
-lint: flakecheck apicheck configcheck readmecheck spellcheck
+lint: flakecheck apicheck configcheck readmecheck
 
 apicheck:
 	(cd "$(SPHINX_DIR)"; $(MAKE) apicheck)
 
 configcheck:
 	(cd "$(SPHINX_DIR)"; $(MAKE) configcheck)
-
-spellcheck:
-	(cd "$(SPHINX_DIR)"; $(MAKE) spelling)
 
 flakecheck:
 	$(FLAKE8) "$(PROJ)"
