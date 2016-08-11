@@ -106,8 +106,10 @@ test:
 	$(PYTHON) setup.py test
 
 cov:
+	mv test_proj/manage.py ./
 	coverage run ./manage.py test -x
 	coverage report
+	mv manage.py test_proj/
 
 build:
 	$(PYTHON) setup.py sdist bdist_wheel

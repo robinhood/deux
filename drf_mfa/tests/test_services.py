@@ -50,6 +50,8 @@ class VerifyMFACodeTests(TestCase):
     def test_verify_mfa_code_fail(self):
         int_mfa_code = int(generate_mfa_code(self.bin_key, 0))
         mfa_code_tests = (
+            None,
+            "",
             generate_mfa_code(self.bin_key, -3),
             generate_mfa_code(self.bin_key, -2),
             generate_mfa_code(self.bin_key, 2),

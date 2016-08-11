@@ -38,6 +38,26 @@ class MFAOAuth2TokenTests(BaseUserTestCase):
         self.backup_code = self.mfa.refresh_backup_code()
         self.mfa_code = generate_mfa_code(self.mfa.sms_bin_key)
 
+    def test_incorrect_credentials(self):
+        data = self._get_data(
+            username=self.user1.username, password="wrong password")
+        response = self.check_post_response(
+            self.url, status.HTTP_400_BAD_REQUEST, data=data,
+            headers=self.headers)
+        self._assert_error_msg(
+            response, "Unable to log in with provided credentials.")
+
+    def test_inactive_user(self):
+        self.user1.is_active = False
+        self.user1.save()
+        data = self._get_data(
+            username=self.user1.username, password=self.user1.password)
+        response = self.check_post_response(
+            self.url, status.HTTP_400_BAD_REQUEST, data=data,
+            headers=self.headers)
+        self._assert_error_msg(
+            response, "Unable to log in with provided credentials.")
+
     def test_get_token_mfa_object_does_not_exist(self):
         data = self._get_data(
             username=self.user1.username, password=self.password1)
