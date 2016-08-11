@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
+import six
 from oauthlib.oauth2 import OAuth2Error
 
 from rest_framework import status
@@ -18,7 +19,6 @@ class InvalidLoginError(OAuth2Error):
         :param message: The error message describing this exception.
         """
         super(Exception, self).__init__(message)
-        self.message = self.args[0]
 
     @property
     def twotuples(self):
@@ -26,7 +26,7 @@ class InvalidLoginError(OAuth2Error):
         Returns a list of tuples that will be converted to the error response.
         This method override the ``two_tuples`` method from ``OAuth2Error``.
         """
-        return [("detail", self.message)]
+        return [("detail", six.text_type(self))]
 
 
 class ChallengeRequiredMessage(OAuth2Error):
@@ -47,7 +47,6 @@ class ChallengeRequiredMessage(OAuth2Error):
         :param challenge_type: The challenge type the user should expect.
         """
         super(Exception, self).__init__(challenge_type)
-        self.challenge_type = self.args[0]
 
     @property
     def twotuples(self):
@@ -57,5 +56,5 @@ class ChallengeRequiredMessage(OAuth2Error):
         """
         return [
             ("mfa_required", True),
-            ("mfa_type", self.challenge_type),
+            ("mfa_type", six.text_type(self)),
         ]

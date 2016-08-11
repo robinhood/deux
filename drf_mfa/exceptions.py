@@ -14,9 +14,8 @@ class NotSMSNumberError(FailedChallengeError):
     number for receiving SMS's.
     """
 
-    def __init__(self):
-        super(NotSMSNumberError, self).__init__(
-            strings.NOT_SMS_PHONE_NUMBER_ERROR)
+    def __init__(self, message=strings.NOT_SMS_PHONE_NUMBER_ERROR):
+        super(NotSMSNumberError, self).__init__(message)
 
 
 class TwilioMessageError(FailedChallengeError):
@@ -25,5 +24,5 @@ class TwilioMessageError(FailedChallengeError):
     other than ``NotSMSNumberError``.
     """
 
-    def __init__(self):
-        super(TwilioMessageError, self).__init__(strings.SMS_SEND_ERROR)
+    def __init__(self, message=strings.SMS_SEND_ERROR):
+        super(TwilioMessageError, self).__init__(message)
