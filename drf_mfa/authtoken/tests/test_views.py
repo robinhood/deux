@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
+import six
 from mock import patch
 
 from django.core.urlresolvers import reverse
@@ -57,4 +58,6 @@ class ObtainMFAAuthTokenTest(_BaseMFAViewTest):
         data["password"] = self.password1
         resp = self.check_post_response(
             self.url, status.HTTP_200_OK, data=data)
-        self.assertEqual(resp.data, {"token": str(self.user1.auth_token)})
+        self.assertEqual(resp.data, {
+            "token": six.text_type(self.user1.auth_token),
+        })

@@ -11,14 +11,14 @@ class InvalidLoginError(OAuth2Error):
     will result in a 400 Bad Request error in the OAuth API.
     """
 
-    def __init__(self, error_msg):
+    def __init__(self, message):
         """
         Initializes this error with the given error message.
 
-        :param error_msg: The error message describing this exception.
+        :param message: The error message describing this exception.
         """
-        super(OAuth2Error, self).__init__()
-        self.error_msg = error_msg
+        super(Exception, self).__init__(message)
+        self.message = self.args[0]
 
     @property
     def twotuples(self):
@@ -26,7 +26,7 @@ class InvalidLoginError(OAuth2Error):
         Returns a list of tuples that will be converted to the error response.
         This method override the ``two_tuples`` method from ``OAuth2Error``.
         """
-        return [("detail", self.error_msg)]
+        return [("detail", self.message)]
 
 
 class ChallengeRequiredMessage(OAuth2Error):
@@ -46,8 +46,8 @@ class ChallengeRequiredMessage(OAuth2Error):
 
         :param challenge_type: The challenge type the user should expect.
         """
-        super(OAuth2Error, self).__init__()
-        self.challenge_type = challenge_type
+        super(Exception, self).__init__(challenge_type)
+        self.challenge_type = self.args[0]
 
     @property
     def twotuples(self):

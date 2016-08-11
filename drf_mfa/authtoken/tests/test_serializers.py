@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
+import six
 from mock import patch
 
 from drf_mfa.app_settings import mfa_settings
@@ -66,7 +67,7 @@ class MFAAuthTokenSerializerTest(BaseUserTestCase):
         })
         self.assertTrue(serializer.is_valid())
 
-        bad_code = str(int(mfa_code) + 1)
+        bad_code = six.text_type(int(mfa_code) + 1)
         serializer = MFAAuthTokenSerializer(data={
             "username": self.user2.username,
             "password": self.password2,

@@ -1,5 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
+import six
+
 from rest_framework import serializers
 
 from drf_mfa.app_settings import mfa_settings
@@ -68,7 +70,7 @@ class _BaseChallengeRequestSerializer(MultiFactorAuthSerializer):
                 instance, self.challenge_type).generate_challenge()
         except FailedChallengeError as e:
             raise serializers.ValidationError({
-                "detail": str(e)
+                "detail": six.text_type(e)
             })
 
     def validate(self, internal_data):
