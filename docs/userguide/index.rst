@@ -6,7 +6,7 @@
 
 :Release: |version|
 
-Guide for installing, configuring, and extending ``drf_mfa`` inside your
+Guide for installing, configuring, and extending ``deux`` inside your
 application.
 
 .. toctree::

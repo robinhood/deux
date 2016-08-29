@@ -16,7 +16,7 @@ API is as followed.
 
 View detailed URL documentation here_.
 
-.. _here: ../reference/drf_mfa.urls.html
+.. _here: ../reference/deux.urls.html
 
 Getting MFA Status
 ==================
@@ -27,7 +27,7 @@ is enabled and which phone number it is enabled through.
 Authentication
 ==============
 
-DRF_MFA supports authentication through both ``authtoken`` and ``oauth2``. For both of these protocols, users must submit their username, password, and an MFA code or backup code. If the request is submitted without the token, they will be prompted for a token.
+Deux supports authentication through both ``authtoken`` and ``oauth2``. For both of these protocols, users must submit their username, password, and an MFA code or backup code. If the request is submitted without the token, they will be prompted for a token.
 
 #. For ``authtoken``, place the request to ``PUT /mfa/authtoken/login``.
 
@@ -50,7 +50,7 @@ SMS
 ---
 
 To enable MFA through SMS, the user must first submit a request to
-``PUT mfa/sms/request/`` with a phone number, which will send an SMS to the 
+``PUT mfa/sms/request/`` with a phone number, which will send an SMS to the
 phone number with the MFA code.
 
 The user should then submit a ``PUT mfa/sms/verify/`` request with the MFA code

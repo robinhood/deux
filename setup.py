@@ -15,7 +15,7 @@ except (AttributeError, ImportError):
     def _pyimp():
         return 'Python'
 
-NAME = 'drf_mfa'
+NAME = 'deux'
 
 E_UNSUPPORTED_PYTHON = '%s 1.0.0 requires %%s %%s or later!' % (NAME,)
 
@@ -158,7 +158,6 @@ setup(
     version=meta['VERSION'],
     description=meta['doc'],
     author=meta['author'],
-    author_email=meta['contact'],
     url=meta['homepage'],
     platforms=['any'],
     license='BSD',

@@ -17,9 +17,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 NOSE_ARGS = [
-    'drf_mfa.authtoken.tests',
-    'drf_mfa.oauth2.tests',
-    'drf_mfa.tests',
+    'deux.authtoken.tests',
+    'deux.oauth2.tests',
+    'deux.tests',
 ]
 
 
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'oauth2_provider',
-    'drf_mfa',
+    'deux',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -77,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-LOCALE_PATHS = [os.path.join(BASE_DIR, "drf_mfa", "locale")]
+LOCALE_PATHS = [os.path.join(BASE_DIR, "deux", "locale")]
 
 WSGI_APPLICATION = 'test_proj.wsgi.application'
 
@@ -123,7 +123,7 @@ PASSWORD_HASHERS = (
 )
 
 
-DRF_MFA = {
+DEUX = {
     "TWILIO_ACCOUNT_SID": "",
     "TWILIO_AUTH_TOKEN": "",
     "TWILIO_PHONE_NUMBER": "",

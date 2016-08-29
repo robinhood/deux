@@ -18,11 +18,11 @@ from django.conf.urls import include, url
 urlpatterns = [
     url(r"^api-auth/",
         include("rest_framework.urls", namespace="rest_framework")),
-    url(r"^mfa/", include("drf_mfa.urls")),
+    url(r"^mfa/", include("deux.urls")),
     url(r"^mfa/authtoken/",
-        include("drf_mfa.authtoken.urls", namespace="authtoken"),
+        include("deux.authtoken.urls", namespace="authtoken"),
     ),
     url(r"^mfa/oauth2/",
-        include("drf_mfa.oauth2.urls", namespace="oauth2"),
+        include("deux.oauth2.urls", namespace="oauth2"),
     ),
 ]

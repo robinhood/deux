@@ -3,9 +3,9 @@
 =====================================================================
 
 :Version: 1.0.0
-:Web: http://drf_mfa.readthedocs.org/
-:Download: http://pypi.python.org/pypi/drf_mfa
-:Source: http://github.com/robinhood/drf-mfa
+:Web: http://deux.readthedocs.org/
+:Download: http://pypi.python.org/pypi/deux
+:Source: http://github.com/robinhood/deux
 :Keywords: authentication, two-factor, multifactor
 
 About
@@ -31,13 +31,13 @@ verify the user's identity for a login or other transaction.
 Installation
 ============
 
-You can install drf_mfa either via the Python Package Index (PyPI)
+You can install deux either via the Python Package Index (PyPI)
 or from source.
 
 Requirements
 ------------
 
-``drf_mfa`` version 1.0.0 runs on Python (2.7, 3.4, 3.5).
+``deux`` version 1.0.0 runs on Python (2.7, 3.4, 3.5).
 
 Installing with pip
 -------------------
@@ -45,21 +45,21 @@ Installing with pip
 To install using `pip`:
 ::
 
-    $ pip install -U drf_mfa
+    $ pip install -U deux
 
 .. _installing-from-source:
 
 Downloading and installing from source
 --------------------------------------
 
-Download the latest version of drf_mfa from
-http://pypi.python.org/pypi/drf_mfa
+Download the latest version of deux from
+http://pypi.python.org/pypi/deux
 
 You can install it by doing the following:
 ::
 
-    $ tar xvfz drf_mfa-0.0.0.tar.gz
-    $ cd drf_mfa-0.0.0
+    $ tar xvfz deux-0.0.0.tar.gz
+    $ cd deux-0.0.0
     $ python setup.py build
     # python setup.py install
 
@@ -77,5 +77,5 @@ With pip
 You can install it by doing the following:
 ::
 
-    $ pip install https://github.com/robinhood/drf-mfa/zipball/master#egg=drf_mfa
+    $ pip install https://github.com/robinhood/deux/zipball/master#egg=deux
 

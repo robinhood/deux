@@ -12,15 +12,15 @@ Setup
 .. _guide: http://www.django-rest-framework.org/
 .. _INSTALLED_APPS: https://docs.djangoproject.com/en/1.9/ref/settings/#std:setting-INSTALLED_APPS
 
-To set up ``drf_mfa`` for your Django Rest Framework application, follow these steps. For help setting up a DRF project, see guide_ here.
+To set up ``deux`` for your Django Rest Framework application, follow these steps. For help setting up a DRF project, see guide_ here.
 
-#. Install drf_mfa.
+#. Install deux.
 
    .. code-block:: console
 
-        $ pip install drf_mfa
+        $ pip install deux
 
-#. Add ``drf_mfa`` to INSTALLED_APPS_ after ``rest_framework.authtoken`` 
+#. Add ``deux`` to INSTALLED_APPS_ after ``rest_framework.authtoken``
    and ``oauth2_provider``, depending on which authentication protocol you use.
 
    .. code-block:: python
@@ -30,7 +30,7 @@ To set up ``drf_mfa`` for your Django Rest Framework application, follow these s
             'rest_framework.authtoken',
             'oauth2_provider',
             # ...,
-            'drf_mfa',
+            'deux',
         )
 
 #. Migrate your database to add the ``MultiFactorAuth`` model.
@@ -54,7 +54,7 @@ To enable them, add the following configuration to your file :file:`urls.py`:
 
 .. code-block:: python
 
-    url(r"^mfa/", include("drf_mfa.urls", namespace="mfa")),
+    url(r"^mfa/", include("deux.urls", namespace="mfa")),
 
 The library also provides views for authenticating through multifactor
 authentication depending on your authentication protocol.
@@ -64,14 +64,14 @@ authentication depending on your authentication protocol.
     .. code-block:: python
 
         url(r"^mfa/authtoken/", include(
-            "drf_mfa.authtoken.urls", namespace="mfa-authtoken:login")),
+            "deux.authtoken.urls", namespace="mfa-authtoken:login")),
 
 #. For ``oauth2``, add the following to :file:`urls.py`:
 
     .. code-block:: python
 
         url(r"^mfa/oauth2/", include(
-            "drf_mfa.oauth2.urls", namespace="mfa-oauth2:login")),
+            "deux.oauth2.urls", namespace="mfa-oauth2:login")),
 
 .. _settings:
 
@@ -83,12 +83,12 @@ followed:
 
     .. code-block:: python
 
-        DRF_MFA = {
+        Deux = {
             "BACKUP_CODE_DIGITS": 12,
             "MFA_CODE_NUM_DIGITS": 6,
             "STEP_SIZE": 30,
-            "MFA_MODEL": "drf_mfa.models.MultiFactorAuth",
-            "SEND_MFA_TEXT_FUNC": "drf_mfa.notifications.send_mfa_code_text_message",
+            "MFA_MODEL": "deux.models.MultiFactorAuth",
+            "SEND_MFA_TEXT_FUNC": "deux.notifications.send_mfa_code_text_message",
             "TWILIO_ACCOUNT_SID": "",
             "TWILIO_AUTH_TOKEN": "",
             "TWILIO_PHONE_NUMBER": "",
@@ -113,7 +113,7 @@ MFA Optional Settings
 #. ``MFA_MODEL``: The model used for multifactor authentication
 
     - **Default**: ``models.MultiFactorAuth``
-    - **Descrtiption**: The default model is a blank extension of 
+    - **Descrtiption**: The default model is a blank extension of
       ``abstract_models.AbstractMultiFactorAuth``
 
 Twilio Driver Settings
@@ -121,7 +121,7 @@ Twilio Driver Settings
 
 #. ``SEND_MFA_TEXT_FUNC``: The function used for sending text messages to users.
 
-    - **Default**: ``drf_mfa.notifications.send_mfa_code_text_message``
+    - **Default**: ``deux.notifications.send_mfa_code_text_message``
 
 If you use our default Twilio driver, you must also include your Twilio
 credentials in the settings object.

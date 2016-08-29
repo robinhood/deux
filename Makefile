@@ -1,4 +1,4 @@
-PROJ=drf_mfa
+PROJ=deux
 PYTHON=python
 GIT=git
 TOX=tox

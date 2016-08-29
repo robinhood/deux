@@ -3,7 +3,7 @@
 Copyright
 =========
 
-*drf_mfa User Manual*
+*Deux User Manual*
 
 by Robinhood Markets, Inc. and individual contributors.
 
@@ -25,7 +25,7 @@ a license compatible to this one.
 
 .. note::
 
-   While the *drf_mfa* documentation is offered under the
+   While the *Deux* documentation is offered under the
    Creative Commons *Attribution-ShareAlike 4.0 International* license
-   the drf_mfa *software* is offered under the
+   the Deux *software* is offered under the
    `BSD License (3 Clause) <http://www.opensource.org/licenses/BSD-3-Clause>`_

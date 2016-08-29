@@ -2,4 +2,4 @@ Quick Start
 ===========
 
 Go immediately to the :ref:`django-guide` guide to get started using
-drf_mfa in your Django Rest Framework projects.
+deux in your Django Rest Framework projects.

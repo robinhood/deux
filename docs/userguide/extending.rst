@@ -10,7 +10,7 @@ Notifications
 The send SMS function can be directly overridden by a custom function. You can
 configure the function in your ``SEND_MFA_TEXT_FUNC`` setting.
 
-Your SMS function should throw :class:`drf_mfa.exceptions.FailedChallengeError` for any errors to be caught by this library's functions.
+Your SMS function should throw :class:`deux.exceptions.FailedChallengeError` for any errors to be caught by this library's functions.
 
 Your function can look something like this:
 
@@ -23,7 +23,7 @@ To use the function, in your ``settings.py``:
 
     .. code-block:: python
 
-        DRF_MFA = {
+        DEUX = {
             ...
             "SEND_MFA_TEXT_FUNC": "<module_path>.custom_send_function",
         }
@@ -32,7 +32,7 @@ To use the function, in your ``settings.py``:
 Models
 ======
 
-You can write your own custom model that extends :class:`drf_mfa.abstract_models.AbstractMultiFactorAuth` and configure the model in your ``MFA_MODEL`` setting.
+You can write your own custom model that extends :class:`deux.abstract_models.AbstractMultiFactorAuth` and configure the model in your ``MFA_MODEL`` setting.
 
 Your model can look something like this:
 
@@ -45,7 +45,7 @@ To use the function, in your ``settings.py``:
 
     .. code-block:: python
 
-        DRF_MFA = {
+        DEUX = {
             ...
             "MFA_MODEL": "<module_path>.CustomMultiFactorAuth",
         }
@@ -66,10 +66,10 @@ Register your new endpoint in the ``test_proj/urls.py`` file like this:
     .. code-block:: python
 
         url(r"^mfa/<protocol>/",
-            include("drf_mfa.<protocol>.urls", namespace="<protocol>"),
+            include("deux.<protocol>.urls", namespace="<protocol>"),
         ),
 
-Look at :class:`drf_mfa.authtoken` or :class:`drf_mfa.oauth2` for examples.
+Look at :class:`deux.authtoken` or :class:`deux.oauth2` for examples.
 
 
 Challenge Methods
@@ -77,7 +77,7 @@ Challenge Methods
 
 Currently, the package supports two factor over text message. However, it is easy to add your own challenge method for two factor (i.e. Google Authenticator or email).
 
-Create a new challenge type in :class:`drf_mfa.constants`.
+Create a new challenge type in :class:`deux.constants`.
 
     .. code-block:: python
 
@@ -86,7 +86,7 @@ Create a new challenge type in :class:`drf_mfa.constants`.
         CHALLENGE_TYPES = (SMS, YOUR_CHALLENGE_METHOD)
 
 
-Then, add a new challenge method to the :class:`drf_mfa.services.MultiFactorChallenge` class. 
+Then, add a new challenge method to the :class:`deux.services.MultiFactorChallenge` class.
 
     .. code-block:: python
 
