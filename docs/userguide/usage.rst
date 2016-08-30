@@ -16,7 +16,7 @@ API is as followed.
 
 View detailed URL documentation here_.
 
-.. _here: ../reference/deux.urls.html
+.. _here: ../reference/deux.html
 
 Getting MFA Status
 ==================
