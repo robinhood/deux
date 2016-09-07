@@ -16,7 +16,7 @@ DEFAULTS = {
     "STEP_SIZE": 30,
     "TWILIO_ACCOUNT_SID": "",
     "TWILIO_AUTH_TOKEN": "",
-    "TWILIO_PHONE_NUMBER": "",
+    "TWILIO_SMS_POOL_SID": "",
 }
 
 # List of settings that cannot be empty.

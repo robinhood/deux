@@ -4,7 +4,7 @@ from mock import Mock, patch
 from twilio.rest.exceptions import TwilioRestException
 
 from deux.app_settings import mfa_settings
-from deux.exceptions import NotSMSNumberError, TwilioMessageError
+from deux.exceptions import InvalidPhoneNumberError, TwilioMessageError
 from deux.notifications import send_mfa_code_text_message
 
 from .test_base import BaseUserTestCase
@@ -24,7 +24,7 @@ class SendMFACodeTextMessageTests(BaseUserTestCase):
     def test_success(self, mfa_settings, twilio_client):
         mfa_settings.TWILIO_ACCOUNT_SID = "sid"
         mfa_settings.TWILIO_AUTH_TOKEN = "authtoken"
-        mfa_settings.TWILIO_PHONE_NUMBER = "0987654321"
+        mfa_settings.TWILIO_SMS_POOL_SID = "0987654321"
 
         twilio_client_instance = Mock()
         twilio_client.return_value = twilio_client_instance
@@ -37,17 +37,17 @@ class SendMFACodeTextMessageTests(BaseUserTestCase):
 
     @patch("deux.notifications.TwilioRestClient")
     @patch("deux.notifications.mfa_settings")
-    def test_not_sms_number(self, mfa_settings, twilio_client):
+    def test_invalid_number(self, mfa_settings, twilio_client):
         mfa_settings.TWILIO_ACCOUNT_SID = "sid"
         mfa_settings.TWILIO_AUTH_TOKEN = "authtoken"
-        mfa_settings.TWILIO_PHONE_NUMBER = "0987654321"
+        mfa_settings.TWILIO_SMS_POOL_SID = "0987654321"
 
         twilio_client_instance = Mock()
         twilio_client_instance.messages.create.side_effect = (
-            TwilioRestException(400, "abc", code=21614))
+            TwilioRestException(400, "abc", code=21401))
         twilio_client.return_value = twilio_client_instance
 
-        with self.assertRaises(NotSMSNumberError):
+        with self.assertRaises(InvalidPhoneNumberError):
             send_mfa_code_text_message(
                 mfa_instance=self.mfa, mfa_code=self.code)
 
@@ -56,7 +56,7 @@ class SendMFACodeTextMessageTests(BaseUserTestCase):
     def test_failed_sms_error(self, mfa_settings, twilio_client):
         mfa_settings.TWILIO_ACCOUNT_SID = "sid"
         mfa_settings.TWILIO_AUTH_TOKEN = "authtoken"
-        mfa_settings.TWILIO_PHONE_NUMBER = "0987654321"
+        mfa_settings.TWILIO_SMS_POOL_SID = "0987654321"
 
         twilio_client_instance = Mock()
         twilio_client_instance.messages.create.side_effect = (

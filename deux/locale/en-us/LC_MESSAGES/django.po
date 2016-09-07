@@ -42,7 +42,7 @@ msgid "MFA phone number must be set for this challenge."
 msgstr ""
 
 #: deux/strings.py:14
-msgid "Please enter an SMS enabled phone number."
+msgid "Please enter a valid phone number."
 msgstr ""
 
 #: deux/strings.py:15

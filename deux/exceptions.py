@@ -8,14 +8,14 @@ class FailedChallengeError(Exception):
     pass
 
 
-class NotSMSNumberError(FailedChallengeError):
+class InvalidPhoneNumberError(FailedChallengeError):
     """
     Exception for SMS that fails because phone number is not a valid
     number for receiving SMS's.
     """
 
-    def __init__(self, message=strings.NOT_SMS_PHONE_NUMBER_ERROR):
-        super(NotSMSNumberError, self).__init__(message)
+    def __init__(self, message=strings.INVALID_PHONE_NUMBER_ERROR):
+        super(InvalidPhoneNumberError, self).__init__(message)
 
 
 class TwilioMessageError(FailedChallengeError):
