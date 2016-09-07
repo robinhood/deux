@@ -35,7 +35,7 @@ elif PY33_OR_LESS and not PYPY24_ATLEAST:
 # -*- Classifiers -*-
 
 classes = """
-    Development Status :: 2 - Pre-Alpha
+    Development Status :: 4 - Beta
     License :: OSI Approved :: BSD License
     Programming Language :: Python
     Programming Language :: Python :: 2
