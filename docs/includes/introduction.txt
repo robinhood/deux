@@ -1,7 +1,7 @@
 :Version: 1.0.0
-:Web: http://deux.readthedocs.org/
-:Download: http://pypi.python.org/pypi/deux
-:Source: http://github.com/robinhood/deux
+:Web: https://deux.readthedocs.org/
+:Download: https://pypi.python.org/pypi/deux
+:Source: https://github.com/robinhood/deux
 :Keywords: authentication, two-factor, multifactor
 
 About
