@@ -1,4 +1,7 @@
 .. image:: http://deux.readthedocs.io/en/latest/_images/deux_banner.png
+   :align: center
+   :width: 721
+   :height: 250
 
 |build-status| |license| |wheel| |pyversion| |pyimp|
 
