@@ -12,6 +12,8 @@ SPHINX_DIR=docs/
 SPHINX_BUILDDIR="${SPHINX_DIR}/_build"
 README=README.rst
 README_SRC="docs/templates/readme.txt"
+CONTRIBUTING=CONTRIBUTING.rst
+CONTRIBUTING_SRC="docs/contributing.rst"
 SPHINX_HTMLDIR="${SPHINX_BUILDDIR}/html"
 DOCUMENTATION=Documentation
 FLAKEPLUSTARGET=2.7
@@ -27,10 +29,12 @@ help:
 	@echo "    apicheck         - Check API reference coverage."
 	@echo "    configcheck      - Check configuration reference coverage."
 	@echo "    readmecheck      - Check README.rst encoding."
+	@echo "    contribcheck     - Check CONTRIBUTING.rst encoding"
 	@echo "    flakes --------  - Check code for syntax and style errors."
 	@echo "      flakecheck     - Run flake8 on the source code."
 	@echo "      flakepluscheck - Run flakeplus on the source code."
 	@echo "readme               - Regenerate README.rst file."
+	@echo "contrib              - Regenerate CONTRIBUTING.rst file"
 	@echo "clean-dist --------- - Clean all distribution build artifacts."
 	@echo "  clean-git-force    - Remove all uncomitted files."
 	@echo "  clean ------------ - Non-destructive clean"
@@ -84,6 +88,14 @@ $(README):
 
 readme: clean-readme $(README) readmecheck
 
+clean-contrib:
+	-rm -f "$(CONTRIBUTING)"
+
+$(CONTRIBUTING):
+	$(SPHINX2RST) "$(CONTRIBUTING_SRC)" > $@
+
+contrib: clean-contrib $(CONTRIBUTING)
+
 clean-pyc:
 	-find . -type f -a \( -name "*.pyc" -o -name "*$$py.class" \) | xargs rm
 	-find . -type d -name "__pycache__" | xargs rm -r
@@ -116,4 +128,4 @@ build:
 
 distcheck: lint test clean
 
-dist: readme clean-dist build
+dist: readme contrib clean-dist build

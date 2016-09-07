@@ -6,6 +6,23 @@ Bug tracker
 If you have any suggestions, bug reports or annoyances please report them
 to our issue tracker at https://github.com/robinhood/deux/issues/
 
+.. _contributing-short:
+
+Contributing
+============
+
+Development of `Deux` happens at GitHub: https://github.com/robinhood/deux
+
+You are highly encouraged to participate in the development
+of `deux`. If you don't like GitHub (for some reason) you're welcome
+to send regular patches.
+
+Be sure to also read the `Contributing to Deux`_ section in the
+documentation.
+
+.. _`Contributing to Thorn`:
+    http://deux.readthedocs.io/en/latest.html
+
 .. _license:
 
 License
