@@ -46,7 +46,8 @@ def verify_mfa_code(bin_key, mfa_code):
     except ValueError:
         return False
     else:
-        totp_check = lambda drift: int(generate_mfa_code(bin_key, drift))
+        totp_check = lambda drift: int(
+            generate_mfa_code(bin_key=bin_key, drift=drift))
         return any(totp_check(drift) == mfa_code for drift in [-1, 0, 1])
 
 
@@ -85,6 +86,6 @@ class MultiFactorChallenge(object):
 
     def _sms_challenge(self):
         """Executes the SMS challenge."""
-        code = generate_mfa_code(self.instance.sms_bin_key)
+        code = generate_mfa_code(bin_key=self.instance.sms_bin_key)
         mfa_settings.SEND_MFA_TEXT_FUNC(
             mfa_instance=self.instance, mfa_code=code)
