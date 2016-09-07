@@ -4,6 +4,7 @@ from binascii import unhexlify
 
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils.crypto import constant_time_compare
 
 from deux.app_settings import mfa_settings
 from deux.constants import CHALLENGE_TYPES, DISABLED, SMS
@@ -139,7 +140,7 @@ class AbstractMultiFactorAuth(models.Model):
         a backup code to authenticate disables MFA as a side effect.
         """
         backup = self.backup_code
-        if code and code == backup:
+        if code and constant_time_compare(code, backup):
             self.disable()
             return True
         return False

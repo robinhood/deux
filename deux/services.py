@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 import six
 from uuid import uuid4
 
+from django.utils.crypto import constant_time_compare
 from django_otp.oath import totp
 
 from deux.app_settings import mfa_settings
@@ -48,7 +49,10 @@ def verify_mfa_code(bin_key, mfa_code):
     else:
         totp_check = lambda drift: int(
             generate_mfa_code(bin_key=bin_key, drift=drift))
-        return any(totp_check(drift) == mfa_code for drift in [-1, 0, 1])
+        return any(
+            constant_time_compare(totp_check(drift), mfa_code)
+            for drift in [-1, 0, 1]
+        )
 
 
 class MultiFactorChallenge(object):
