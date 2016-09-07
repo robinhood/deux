@@ -46,6 +46,9 @@ classes = """
     Programming Language :: Python :: Implementation :: CPython
     Programming Language :: Python :: Implementation :: PyPy
     Programming Language :: Python :: Implementation :: Jython
+    Framework :: Django
+    Framework :: Django :: 1.9
+    Framework :: Django :: 1.10
     Operating System :: OS Independent
 """
 classifiers = [s.strip() for s in classes.split('\n') if s]
@@ -158,6 +161,7 @@ setup(
     version=meta['VERSION'],
     description=meta['doc'],
     author=meta['author'],
+    author_email=meta['contact'],
     url=meta['homepage'],
     platforms=['any'],
     license='BSD',

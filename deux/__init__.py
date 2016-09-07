@@ -16,6 +16,7 @@ VERSION = version_info = version_info_t(1, 0, 0, '', '')
 
 __version__ = '{0.major}.{0.minor}.{0.micro}{0.releaselevel}'.format(VERSION)
 __author__ = 'Robinhood Markets'
+__contact__ = 'opensource@robinhood.com'
 __homepage__ = 'https://github.com/robinhood/deux'
 __docformat__ = 'restructuredtext'
 
