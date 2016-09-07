@@ -20,8 +20,8 @@ to send regular patches.
 Be sure to also read the `Contributing to Deux`_ section in the
 documentation.
 
-.. _`Contributing to Thorn`:
-    http://deux.readthedocs.io/en/latest.html
+.. _`Contributing to Deux`:
+    http://deux.readthedocs.io/en/latest/contributing.html
 
 .. _license:
 

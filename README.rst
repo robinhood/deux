@@ -1,6 +1,6 @@
-=====================================================================
- Multifactor Authentication for Django Rest Framework
-=====================================================================
+.. image:: http://deux.readthedocs.io/en/latest/_images/deux_banner.png
+
+|build-status| |license|
 
 :Version: 1.0.0
 :Web: http://deux.readthedocs.org/
@@ -78,4 +78,12 @@ You can install it by doing the following:
 ::
 
     $ pip install https://github.com/robinhood/deux/zipball/master#egg=deux
+
+.. |build-status| image:: https://secure.travis-ci.org/robinhood/deux.png?branch=master
+    :alt: Build status
+    :target: https://travis-ci.org/robinhood/deux
+
+.. |license| image:: https://img.shields.io/pypi/l/deux.svg
+    :alt: BSD License
+    :target: https://opensource.org/licenses/BSD-3-Clause
 

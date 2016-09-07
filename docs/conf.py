@@ -12,6 +12,8 @@ globals().update(conf.build_config(
     webdomain='robinhood.com',
     github_project='robinhood/deux',
     copyright='2016',
+    html_logo='images/logo.png',
+    html_favicon='images/favicon.ico',
     html_static_path=[],
     include_intersphinx={'python', 'sphinx'},
     django_settings='test_proj.settings',
