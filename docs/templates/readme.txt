@@ -1,6 +1,6 @@
 .. image:: http://deux.readthedocs.io/en/latest/_images/deux_banner.png
 
-|build-status| |license| |wheel|
+|build-status| |license| |wheel| |pyversion| |pyimp|
 
 .. include:: ../includes/introduction.txt
 
@@ -16,4 +16,12 @@
 
 .. |wheel| image:: https://img.shields.io/pypi/wheel/deux.svg
     :alt: Deux can be installed via wheel
+    :target: http://pypi.python.org/pypi/deux/
+
+.. |pyversion| image:: https://img.shields.io/pypi/pyversions/deux.svg
+    :alt: Supported Python versions.
+    :target: http://pypi.python.org/pypi/deux/
+
+.. |pyimp| image:: https://img.shields.io/pypi/implementation/deux.svg
+    :alt: Support Python implementations.
     :target: http://pypi.python.org/pypi/deux/

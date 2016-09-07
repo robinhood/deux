@@ -1,6 +1,6 @@
 .. image:: http://deux.readthedocs.io/en/latest/_images/deux_banner.png
 
-|build-status| |license|
+|build-status| |license| |wheel| |pyversion| |pyimp|
 
 :Version: 1.0.0
 :Web: http://deux.readthedocs.org/
@@ -79,11 +79,23 @@ You can install it by doing the following:
 
     $ pip install https://github.com/robinhood/deux/zipball/master#egg=deux
 
-.. |build-status| image:: https://secure.travis-ci.org/robinhood/deux.png?branch=master
+.. |build-status| image:: https://travis-ci.org/robinhood/deux.svg?branch=master
     :alt: Build status
     :target: https://travis-ci.org/robinhood/deux
 
 .. |license| image:: https://img.shields.io/pypi/l/deux.svg
     :alt: BSD License
     :target: https://opensource.org/licenses/BSD-3-Clause
+
+.. |wheel| image:: https://img.shields.io/pypi/wheel/deux.svg
+    :alt: Deux can be installed via wheel
+    :target: http://pypi.python.org/pypi/deux/
+
+.. |pyversion| image:: https://img.shields.io/pypi/pyversions/deux.svg
+    :alt: Supported Python versions.
+    :target: http://pypi.python.org/pypi/deux/
+
+.. |pyimp| image:: https://img.shields.io/pypi/implementation/deux.svg
+    :alt: Support Python implementations.
+    :target: http://pypi.python.org/pypi/deux/
 
