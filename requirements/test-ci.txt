@@ -1,3 +1,2 @@
 pytest-cov
-coverage>=3.0
 codecov
