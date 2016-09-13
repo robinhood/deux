@@ -3,7 +3,7 @@
    :width: 721
    :height: 250
 
-|build-status| |license| |wheel| |pyversion| |pyimp|
+|build-status| |codecov| |license| |wheel| |pyversion| |pyimp|
 
 :Version: 1.0.0
 :Web: https://deux.readthedocs.org/
@@ -101,4 +101,8 @@ You can install it by doing the following:
 .. |pyimp| image:: https://img.shields.io/pypi/implementation/deux.svg
     :alt: Support Python implementations.
     :target: https://pypi.python.org/pypi/deux/
+
+.. |codecov| image:: https://codecov.io/gh/robinhood/deux/branch/master/graph/badge.svg
+  :alt: Code Coverage
+  :target: https://codecov.io/gh/robinhood/deux
 
