@@ -35,5 +35,5 @@ before_install:
 install: travis_retry pip install -U tox
 script: tox -v -- -v
 after_success:
-  - .tox/$TRAVIS_PYTHON_VERSION/bin/coverage xml
-  - .tox/$TRAVIS_PYTHON_VERSION/bin/codecov -e TOXENV
+  - .tox/$TOXENV/bin/coverage xml
+  - .tox/$TOXENV/bin/codecov -e TOXENV
