@@ -6,7 +6,7 @@ import six
 from django.conf import settings
 
 
-USER_SETTINGS = getattr(settings, 'Deux', None)
+USER_SETTINGS = getattr(settings, 'DEUX', None)
 
 DEFAULTS = {
     "BACKUP_CODE_DIGITS": 12,
