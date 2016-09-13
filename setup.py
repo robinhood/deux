@@ -123,36 +123,36 @@ else:
 
 # -*- %%% -*-
 
-class RunTests(Command):
-    description = 'Run the test suite.'
-    user_options = []
-    extra_env = {}
-    extra_args = []
+# class RunTests(Command):
+#     description = 'Run the test suite.'
+#     user_options = []
+#     extra_env = {}
+#     extra_args = []
 
-    def run(self):
-        for env_name, env_value in self.extra_env.items():
-            os.environ[env_name] = str(env_value)
+#     def run(self):
+#         for env_name, env_value in self.extra_env.items():
+#             os.environ[env_name] = str(env_value)
 
-        this_dir = os.getcwd()
-        testproj_dir = os.path.join(this_dir, 'test_proj')
-        os.chdir(testproj_dir)
-        sys.path.append(testproj_dir)
-        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'test_proj.settings')
-        import django
-        django.setup()
-        from django.core.management import execute_from_command_line
-        prev_argv = list(sys.argv)
-        try:
-            sys.argv = [__file__, 'test'] + self.extra_args
-            execute_from_command_line(argv=sys.argv)
-        finally:
-            sys.argv = prev_argv
+#         this_dir = os.getcwd()
+#         testproj_dir = os.path.join(this_dir, 'test_proj')
+#         os.chdir(testproj_dir)
+#         sys.path.append(testproj_dir)
+#         os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'test_proj.settings')
+#         import django
+#         django.setup()
+#         from django.core.management import execute_from_command_line
+#         prev_argv = list(sys.argv)
+#         try:
+#             sys.argv = [__file__, 'test'] + self.extra_args
+#             execute_from_command_line(argv=sys.argv)
+#         finally:
+#             sys.argv = prev_argv
 
-    def initialize_options(self):
-        pass
+#     def initialize_options(self):
+#         pass
 
-    def finalize_options(self):
-        pass
+#     def finalize_options(self):
+#         pass
 
 
 setup(
@@ -169,8 +169,6 @@ setup(
     zip_safe=False,
     install_requires=reqs('default.txt'),
     tests_require=reqs('test.txt'),
-    test_suite='nose.collector',
     classifiers=classifiers,
     long_description=long_description,
-    cmdclass={'test': RunTests},
 )
