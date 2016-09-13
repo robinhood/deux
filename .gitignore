@@ -27,4 +27,5 @@ Documentation/
 celery/tests/cover/
 .ve*
 cover/
+htmlcov/
 .vagrant/

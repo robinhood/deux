@@ -1,17 +1,17 @@
 [run]
 branch = 1
 cover_pylib = 0
-include = *drf_mfa/*
-omit = drf_mfa.tests.*
+include = *deux/*
+omit = deux.tests.*
 
 [report]
 omit =
     */python?.?/*
     */site-packages/*
     */pypy/*
-    drf_mfa/app_settings.py
-    drf_mfa/exceptions.py
-    drf_mfa/tests/*
-    drf_mfa/migrations/*
+    deux/app_settings.py
+    deux/exceptions.py
+    deux/tests/*
+    deux/migrations/*
     manage.py
     test_proj/*
