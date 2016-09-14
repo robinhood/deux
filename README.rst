@@ -5,7 +5,7 @@
 
 |build-status| |codecov| |license| |wheel| |pyversion| |pyimp|
 
-:Version: 1.0.0
+:Version: 1.1.0
 :Web: https://deux.readthedocs.org/
 :Download: https://pypi.python.org/pypi/deux
 :Source: https://github.com/robinhood/deux
@@ -40,7 +40,7 @@ or from source.
 Requirements
 ------------
 
-``deux`` version 1.0.0 runs on Python (2.7, 3.4, 3.5).
+``deux`` version 1.1.0 runs on Python (2.7, 3.4, 3.5).
 
 Installing with pip
 -------------------

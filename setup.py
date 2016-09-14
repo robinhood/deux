@@ -17,7 +17,7 @@ except (AttributeError, ImportError):
 
 NAME = 'deux'
 
-E_UNSUPPORTED_PYTHON = '%s 1.0.0 requires %%s %%s or later!' % (NAME,)
+E_UNSUPPORTED_PYTHON = '%s 1.1.0 requires %%s %%s or later!' % (NAME,)
 
 PYIMP = _pyimp()
 PY26_OR_LESS = sys.version_info < (2, 7)

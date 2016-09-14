@@ -83,7 +83,7 @@ followed:
 
     .. code-block:: python
 
-        Deux = {
+        DEUX = {
             "BACKUP_CODE_DIGITS": 12,
             "MFA_CODE_NUM_DIGITS": 6,
             "STEP_SIZE": 30,

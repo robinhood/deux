@@ -2,6 +2,15 @@
  Changelog
 ==========
 
+1.1.0
+=====
+:release-date: 2016-09-13 06:00 P.M PDT
+:release-by: Abhishek Fatehpuria
+
+- Added pytest
+- Added codecov
+- Changed settings name from "Deux" to "DEUX"
+
 1.0.0
 =====
 :release-date: 2016-09-07 03:00 P.M PDT
