@@ -28,9 +28,6 @@ INVALID_PHONE_NUMBER_ERROR = _("Please enter a valid phone number.")
 PHONE_NUMBER_NOT_SET_ERROR = _(
     "MFA phone number must be set for this challenge.")
 
-#: Error if the phone number provided cannot receive SMS messages.
-INVALID_PHONE_NUMBER_ERROR = _("Please enter a valid phone number.")
-
 #: Error if SMS fails to send.
 SMS_SEND_ERROR = _("SMS failed to send.")
 

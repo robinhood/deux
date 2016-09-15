@@ -2,6 +2,13 @@
  Changelog
 ==========
 
+1.1.1
+=====
+:release-date: 2016-09-13 06:00 P.M PDT
+:release-by: Abhishek Fatehpuria
+
+- [bugfix] Remove duplicate strings in Deux strings.py
+
 1.1.0
 =====
 :release-date: 2016-09-13 06:00 P.M PDT

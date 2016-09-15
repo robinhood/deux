@@ -1,10 +1,14 @@
+# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-22 00:55+0000\n"
+"POT-Creation-Date: 2016-09-14 23:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,43 +17,43 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: deux/strings.py:6
+#: build/lib/deux/strings.py:7 deux/strings.py:7
 msgid "Login does not take both a verification and backup code."
 msgstr ""
 
-#: deux/strings.py:7
+#: build/lib/deux/strings.py:10 deux/strings.py:10
 msgid "Two factor authentication is not enabled."
 msgstr ""
 
-#: deux/strings.py:8
+#: build/lib/deux/strings.py:13 deux/strings.py:13
 msgid "Two factor authentication is already enabled."
 msgstr ""
 
-#: deux/strings.py:9
+#: build/lib/deux/strings.py:16 deux/strings.py:16
 msgid "Please enter a valid backup code."
 msgstr ""
 
-#: deux/strings.py:10
+#: build/lib/deux/strings.py:19 deux/strings.py:19
+msgid "Unable to log in with provided credentials."
+msgstr ""
+
+#: build/lib/deux/strings.py:22 deux/strings.py:22
 msgid "Please enter a valid code."
 msgstr ""
 
-#: deux/strings.py:11
+#: build/lib/deux/strings.py:25 build/lib/deux/strings.py:32 deux/strings.py:25
 msgid "Please enter a valid phone number."
 msgstr ""
 
-#: deux/strings.py:13
+#: build/lib/deux/strings.py:29 deux/strings.py:29
 msgid "MFA phone number must be set for this challenge."
 msgstr ""
 
-#: deux/strings.py:14
-msgid "Please enter a valid phone number."
-msgstr ""
-
-#: deux/strings.py:15
+#: build/lib/deux/strings.py:35 deux/strings.py:32
 msgid "SMS failed to send."
 msgstr ""
 
-#: deux/strings.py:16
+#: build/lib/deux/strings.py:38 deux/strings.py:35
 #, python-brace-format
 msgid "Two Factor Authentication Code: {code}"
 msgstr ""
