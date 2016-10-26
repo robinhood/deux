@@ -39,6 +39,17 @@ class BaseUserTestCase(APITestCase):
         self.assertEqual(response.status_code, expected_status_code)
         return response
 
+    def check_post_response_with_url_encoded(
+            self, url, expected_status_code, data=None, user=None,
+            headers=None):
+        headers = headers or {}
+        self.client.force_authenticate(user)
+        response = self.client.post(
+            url, data=data, content_type='application/x-www-form-urlencoded',
+            **headers)
+        self.assertEqual(response.status_code, expected_status_code)
+        return response
+
     def check_put_response(
             self, url, expected_status_code, data=None, user=None,
             format="json"):
