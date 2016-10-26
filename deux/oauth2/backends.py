@@ -7,9 +7,9 @@ from rest_framework.request import Request as DRFRequest
 from rest_framework.views import APIView
 
 if sys.version_info < (3,):
-    from urlparse import parse_qs as parse_url_body
+    from urlparse import parse_qs
 else:
-    from urllib import parse as parse_url_body
+    from urllib.parse import parse_qs
 
 
 class MFARequestBackend(OAuthLibCore):
@@ -40,8 +40,7 @@ class MFARequestBackend(OAuthLibCore):
         :param body: The request body in url encoded form.
         :returns: Dictionary with ``mfa_code`` and ``backup_code``.
         """
-        print parse_url_body(body)
-        params = {key: value[0] for key, value in parse_url_body(body).items()}
+        params = {key: value[0] for key, value in parse_qs(body).items()}
         return {
             "mfa_code": params.get("mfa_code"),
             "backup_code": params.get("backup_code"),

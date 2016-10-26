@@ -2,10 +2,10 @@ from __future__ import absolute_import, unicode_literals
 
 import json
 import six
+import sys
 from base64 import b64encode
 from mock import patch
 from oauth2_provider.models import get_application_model
-from urllib import urlencode
 
 from django.core.urlresolvers import reverse
 from rest_framework import status
@@ -14,6 +14,11 @@ from deux.app_settings import mfa_settings
 from deux.constants import SMS
 from deux.services import generate_mfa_code
 from deux.tests.test_base import BaseUserTestCase
+
+if sys.version_info < (3,):
+    from urllib import urlencode
+else:
+    from urllib.parse import urlencode
 
 Application = get_application_model()
 
