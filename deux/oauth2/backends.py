@@ -49,7 +49,7 @@ class MFARequestBackend(OAuthLibCore):
     def create_token_response(self, request):
         """
         Overrides the base method to pass in the request body instead of the
-        request because Djange only allows the request data stream to be read
+        request because Django only allows the request data stream to be read
         once.
 
         :param request: The request to create a token response from.
