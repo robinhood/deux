@@ -2,6 +2,13 @@
  Changelog
 ==========
 
+1.2.0
+=====
+:release-date: 2016-10-28 06:00 P.M PDT
+:release-by: Abhishek Fatehpuria
+
+- [oauth2] Support url-encoded requests for oauth
+
 1.1.1
 =====
 :release-date: 2016-09-13 06:00 P.M PDT
