@@ -1,4 +1,4 @@
-:Version: 1.1.1
+:Version: 1.2.0
 :Web: https://deux.readthedocs.org/
 :Download: https://pypi.python.org/pypi/deux
 :Source: https://github.com/robinhood/deux
