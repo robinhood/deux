@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 import json
 import six
+import sys
 from base64 import b64encode
 from mock import patch
 from oauth2_provider.models import get_application_model
@@ -13,6 +14,11 @@ from deux.app_settings import mfa_settings
 from deux.constants import SMS
 from deux.services import generate_mfa_code
 from deux.tests.test_base import BaseUserTestCase
+
+if sys.version_info < (3,):
+    from urllib import urlencode
+else:
+    from urllib.parse import urlencode
 
 Application = get_application_model()
 
@@ -121,6 +127,20 @@ class MFAOAuth2TokenTests(BaseUserTestCase):
             "Login does not take both a verification and backup code."
         )
 
+    def test_login_success_with_multipart(self):
+        data = self._get_data(backup_code=self.backup_code)
+        response = self.check_post_response(
+            self.url, status.HTTP_200_OK, data=data, headers=self.headers,
+            format="multipart")
+        self._assert_authenticated(response)
+
+    def test_login_success_with_urlencoded(self):
+        data = self._get_data(backup_code=self.backup_code)
+        response = self.check_post_response_with_url_encoded(
+            self.url, status.HTTP_200_OK, data=urlencode(data),
+            headers=self.headers)
+        self._assert_authenticated(response)
+
     def _assert_authenticated(self, response):
         content = json.loads(response.content.decode("utf-8"))
         self.assertIsNotNone(content.get("access_token"))
@@ -133,13 +153,16 @@ class MFAOAuth2TokenTests(BaseUserTestCase):
     def _get_data(
             self, username=None, password=None, mfa_code=None,
             backup_code=None):
-        return {
+        data = {
             "grant_type": "password",
             "username": username or self.user2.username,
             "password": password or self.password2,
-            "mfa_code": mfa_code,
-            "backup_code": backup_code
         }
+        if mfa_code:
+            data["mfa_code"] = mfa_code
+        if backup_code:
+            data["backup_code"] = backup_code
+        return data
 
     def _get_basic_auth_header(self, client_id, client_secret):
         """
