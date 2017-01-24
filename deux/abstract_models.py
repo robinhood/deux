@@ -28,7 +28,8 @@ class AbstractMultiFactorAuth(models.Model):
 
     #: User this MFA object represents.
     user = models.OneToOneField(
-        settings.AUTH_USER_MODEL, related_name="multi_factor_auth", primary_key=True)
+        settings.AUTH_USER_MODEL, related_name="multi_factor_auth",
+        primary_key=True)
 
     #: User's phone number.
     phone_number = models.CharField(
