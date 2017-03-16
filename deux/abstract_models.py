@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from binascii import unhexlify
 
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.db import models
 from django.utils.crypto import constant_time_compare
 
@@ -28,7 +28,8 @@ class AbstractMultiFactorAuth(models.Model):
 
     #: User this MFA object represents.
     user = models.OneToOneField(
-        User, related_name="multi_factor_auth", primary_key=True)
+        settings.AUTH_USER_MODEL, related_name="multi_factor_auth",
+        primary_key=True)
 
     #: User's phone number.
     phone_number = models.CharField(
