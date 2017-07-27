@@ -1,7 +1,12 @@
 from __future__ import absolute_import, unicode_literals
 
 from mock import Mock, patch
-from twilio.rest.exceptions import TwilioRestException
+
+try:
+    from twilio.base.exceptions import TwilioRestException
+except ImportError: 
+    from twilio.rest.exceptions import TwilioRestException
+    print("DeprecationWarning: Importing TwilioRestException from twilio.rest is deprecated. Update twilio package to >6.x")
 
 from deux.app_settings import mfa_settings
 from deux.exceptions import InvalidPhoneNumberError, TwilioMessageError
