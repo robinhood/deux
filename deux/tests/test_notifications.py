@@ -4,9 +4,9 @@ from mock import Mock, patch
 
 try:
     from twilio.base.exceptions import TwilioRestException
-except ImportError: 
+except ImportError:
     from twilio.rest.exceptions import TwilioRestException
-    print("DeprecationWarning: Importing TwilioRestException from twilio.rest" 
+    print("DeprecationWarning: Importing TwilioRestException from twilio.rest"
           " is deprecated. Update twilio package to >6.x")
 
 from deux.app_settings import mfa_settings
