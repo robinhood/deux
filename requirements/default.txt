@@ -2,4 +2,4 @@ djangorestframework>=2.4.3
 django-oauth-toolkit>=0.10.0
 django-otp>=0.3.5
 six>=1.10.0
-twilio>=5.4.0
+twilio>=5.4.0,<6.0.0
