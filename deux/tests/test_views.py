@@ -2,7 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 from mock import patch
 
-from django.core.urlresolvers import reverse
 from rest_framework import status
 
 from deux.app_settings import mfa_settings
@@ -13,6 +12,10 @@ from deux import strings
 
 from .test_base import BaseUserTestCase
 
+try:
+    from django.core.urlresolvers import reverse
+except ImportError:
+    from django.urls import reverse
 
 class _BaseMFAViewTest(BaseUserTestCase):
 
