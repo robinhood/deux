@@ -2,6 +2,14 @@
  Changelog
 ==========
 
+1.2.1
+=====
+:release-date: 2018-mm-dd hh:mm P.M PDT
+:release-by: Maintainer
+
+- [fixes] Too many to list
+- [tested] Tested against Django 1.11.
+
 1.2.0
 =====
 :release-date: 2016-10-28 06:00 P.M PDT

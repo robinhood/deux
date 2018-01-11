@@ -13,6 +13,7 @@ env:
     - TOXENV=pypy-django1.9
     - TOXENV=3.4-django1.10
     - TOXENV=3.4-django1.9
+    - TOXENV=3.5-django1.11
     - TOXENV=3.5-django1.10
     - TOXENV=3.5-django1.9
     - TOXENV=flake8
