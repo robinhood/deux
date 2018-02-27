@@ -7,7 +7,7 @@ from django.db import models
 from django.utils.crypto import constant_time_compare
 
 from deux.app_settings import mfa_settings
-from deux.constants import CHALLENGE_TYPES, DISABLED, SMS
+from deux.constants import CHALLENGE_TYPES, DISABLED, SMS, EMAIL
 from deux.services import generate_key
 from deux.validators import phone_number_validator
 
@@ -24,6 +24,7 @@ class AbstractMultiFactorAuth(models.Model):
     CHALLENGE_CHOICES = (
         (SMS, "SMS"),
         (DISABLED, "Off"),
+        (EMAIL, "EMAIL"),
     )
 
     #: User this MFA object represents.
