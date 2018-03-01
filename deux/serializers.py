@@ -216,7 +216,7 @@ class EmailChallengeRequestSerializer(_BaseChallengeRequestSerializer):
         :param mfa_instance: :class:`MultiFactorAuth` instance to use.
         :param validated_data: Data returned by ``validate``.
         """
-        mfa_instance.phone_number = validated_data["email"]
+        mfa_instance.email = validated_data["email"]
         super(EmailChallengeRequestSerializer, self).update(
             mfa_instance, validated_data)
         mfa_instance.save()
