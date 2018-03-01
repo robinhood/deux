@@ -7,9 +7,9 @@ from django.db import models
 from django.utils.crypto import constant_time_compare
 
 from deux.app_settings import mfa_settings
-from deux.constants import CHALLENGE_TYPES, DISABLED, SMS
+from deux.constants import CHALLENGE_TYPES, DISABLED, SMS, EMAIL
 from deux.services import generate_key
-from deux.validators import phone_number_validator
+from deux.validators import phone_number_validator, email_address_validator
 
 
 class AbstractMultiFactorAuth(models.Model):
@@ -24,6 +24,7 @@ class AbstractMultiFactorAuth(models.Model):
     CHALLENGE_CHOICES = (
         (SMS, "SMS"),
         (DISABLED, "Off"),
+        (EMAIL, "EMAIL"),
     )
 
     #: User this MFA object represents.
@@ -36,6 +37,12 @@ class AbstractMultiFactorAuth(models.Model):
     phone_number = models.CharField(
         max_length=15, default="", blank=True,
         validators=[phone_number_validator])
+
+    #: User's email.
+    email = models.EmailField(
+        blank=True,
+        validators=[email_address_validator]
+    )
 
     #: Challenge type used for MFA.
     challenge_type = models.CharField(
@@ -85,7 +92,8 @@ class AbstractMultiFactorAuth(models.Model):
                 challenge=challenge_type)
         )
         return {
-            SMS: self.sms_bin_key
+            SMS: self.sms_bin_key,
+            EMAIL: self.sms_bin_key,
         }.get(challenge_type, None)
 
     def enable(self, challenge_type):
@@ -118,6 +126,7 @@ class AbstractMultiFactorAuth(models.Model):
         self.challenge_type = DISABLED
         self.backup_key = ""
         self.phone_number = ""
+        self.email = ""
         self.save()
 
     def refresh_backup_code(self):

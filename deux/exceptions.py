@@ -26,3 +26,22 @@ class TwilioMessageError(FailedChallengeError):
 
     def __init__(self, message=strings.SMS_SEND_ERROR):
         super(TwilioMessageError, self).__init__(message)
+
+
+class InvalidEmailAddressError(FailedChallengeError):
+    """
+    Exception for Email that fails because email address is not a valid
+    number for receiving emails.
+    """
+
+    def __init__(self, message=strings.INVALID_EMAIL_ADDRESS_ERROR):
+        super(InvalidEmailAddressError, self).__init__(message)
+
+
+class EmailError(FailedChallengeError):
+    """
+    Exception that Sendgrid failed to send the email message.
+    """
+    def __init__(self, message=strings.EMAIL_SEND_ERROR):
+        super(EmailError, self).__init__(message)
+
