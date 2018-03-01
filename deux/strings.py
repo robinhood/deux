@@ -39,3 +39,6 @@ EMAIL_SEND_ERROR = _("Email failed to send.")
 
 #: Message body for a MFA code.
 MFA_CODE_TEXT_MESSAGE = _("Two Factor Authentication Code: {code}")
+
+#: Email body
+MFA_CODE_EMAIL_TEXT = _("Two Factor Authentication Code: {code}")

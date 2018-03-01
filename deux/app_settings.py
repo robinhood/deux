@@ -18,6 +18,10 @@ DEFAULTS = {
     "TWILIO_ACCOUNT_SID": "",
     "TWILIO_AUTH_TOKEN": "",
     "TWILIO_SMS_POOL_SID": "",
+    "SENDGRID_API_KEY": "",
+    "SENDGRID_TEMPLATE_ID": "",
+    "SENDGRID_SENDER_EMAIL": "",
+    "SENDGRID_MAIL_SUBJECT": "MFA login code",
 }
 
 # List of settings that cannot be empty.
