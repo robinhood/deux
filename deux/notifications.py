@@ -61,8 +61,6 @@ def send_mfa_code_email(mfa_instance, mfa_code):
     :param mfa_instance: :class:`MultiFactorAuth` instance to use.
     :param mfa_code: MFA code in the form of a string.
 
-    :raises deux.exceptions.InvalidEmailError: To tell system that this
-        MFA object's email is not a valid email.
     :raises deux.exceptions.EmailError: To tell system that the email failed to send.
     """
     sid = mfa_settings.SENDGRID_API_KEY
@@ -87,6 +85,7 @@ def send_mfa_code_email(mfa_instance, mfa_code):
         mail.personalizations[0].add_substitution(Substitution('%mfa_text%', mfa_text))
         mail.template_id = template_id
 
+    # Todo: add code to deal with incorrect email recipient
     try:
         sg.client.mail.send.post(request_body=mail.get())
     except urllib.HTTPError:

@@ -12,6 +12,10 @@ urlpatterns = [
         name="sms_request-detail"),
     url(r"^sms/verify/$", views.SMSChallengeVerifyDetail.as_view(),
         name="sms_verify-detail"),
+    url(r"^email/request/$", views.EmailChallengeRequestDetail.as_view(),
+        name="email_request-detail"),
+    url(r"^email/verify/$", views.SMSChallengeVerifyDetail.as_view(),
+        name="email_verify-detail"),
     url(r"^recovery/$", views.BackupCodeDetail.as_view(),
         name="backup_code-detail"),
 ]
