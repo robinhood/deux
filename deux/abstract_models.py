@@ -38,6 +38,11 @@ class AbstractMultiFactorAuth(models.Model):
         max_length=15, default="", blank=True,
         validators=[phone_number_validator])
 
+    #: User's email.
+    email = models.EmailField(
+        blank=True,
+    )
+
     #: Challenge type used for MFA.
     challenge_type = models.CharField(
         max_length=16, default=DISABLED,
@@ -86,7 +91,8 @@ class AbstractMultiFactorAuth(models.Model):
                 challenge=challenge_type)
         )
         return {
-            SMS: self.sms_bin_key
+            SMS: self.sms_bin_key,
+            EMAIL: self.sms_bin_key,
         }.get(challenge_type, None)
 
     def enable(self, challenge_type):

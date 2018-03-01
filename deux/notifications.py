@@ -5,7 +5,7 @@ from twilio.rest.exceptions import TwilioRestException
 
 from deux import strings
 from deux.app_settings import mfa_settings
-from deux.exceptions import InvalidPhoneNumberError, TwilioMessageError
+from deux.exceptions import InvalidPhoneNumberError, TwilioMessageError, EmailError, InvalidEmailError
 
 #: Error code from Twilio to indicate at ``InvalidPhoneNumberError``
 NOT_SMS_DEVICE_CODE = 21401
@@ -43,3 +43,16 @@ def send_mfa_code_text_message(mfa_instance, mfa_code):
         if e.code == NOT_SMS_DEVICE_CODE:
             raise InvalidPhoneNumberError()
         raise TwilioMessageError()
+
+
+def send_mfa_code_email(mfa_instance, mfa_code):
+    """
+    Sends the MFA Code text message to the user.
+
+    :param mfa_instance: :class:`MultiFactorAuth` instance to use.
+    :param mfa_code: MFA code in the form of a string.
+
+    :raises deux.exceptions.InvalidEmailError: To tell system that this
+        MFA object's email is not a valid email.
+    :raises deux.exceptions.EmailError: To tell system that the email failed to send.
+    """

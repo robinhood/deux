@@ -6,7 +6,7 @@ from rest_framework import serializers
 
 from deux.app_settings import mfa_settings
 from deux import strings
-from deux.constants import SMS
+from deux.constants import SMS, EMAIL
 from deux.exceptions import FailedChallengeError
 from deux.services import MultiFactorChallenge, verify_mfa_code
 
@@ -35,6 +35,8 @@ class MultiFactorAuthSerializer(serializers.ModelSerializer):
             data["challenge_type"] = mfa_instance.challenge_type
         if mfa_instance.phone_number:
             data["phone_number"] = mfa_instance.phone_number
+        if mfa_instance.email:
+            data["email"] = mfa_instance.email
         return data
 
     class Meta:
@@ -195,6 +197,40 @@ class SMSChallengeRequestSerializer(_BaseChallengeRequestSerializer):
         }
 
 
+class EmailChallengeRequestSerializer(_BaseChallengeRequestSerializer):
+    """
+    class::EmailChallengeRequestSerializer()
+
+    Serializer that facilitates a request to enable MFA over Email.
+    """
+
+    #: This serializer represents the ``SMS`` challenge type.
+    challenge_type = EMAIL
+
+    def update(self, mfa_instance, validated_data):
+        """
+        If the request data is valid, the serializer executes the challenge
+        by calling the super method and also saves the phone number the user
+        requested the SMS to.
+
+        :param mfa_instance: :class:`MultiFactorAuth` instance to use.
+        :param validated_data: Data returned by ``validate``.
+        """
+        mfa_instance.phone_number = validated_data["email"]
+        super(EmailChallengeRequestSerializer, self).update(
+            mfa_instance, validated_data)
+        mfa_instance.save()
+        return mfa_instance
+
+    class Meta(_BaseChallengeRequestSerializer.Meta):
+        fields = ("email",)
+        extra_kwargs = {
+            "email": {
+                "required": True,
+            },
+        }
+
+
 class SMSChallengeVerifySerializer(_BaseChallengeVerifySerializer):
     """
     class::SMSChallengeVerifySerializer()
@@ -205,6 +241,18 @@ class SMSChallengeVerifySerializer(_BaseChallengeVerifySerializer):
 
     #: This serializer represents the ``SMS`` challenge type.
     challenge_type = SMS
+
+
+class EmailChallengeVerifySerializer(_BaseChallengeVerifySerializer):
+    """
+    class::EmailChallengeVerifySerializer()
+
+    Extension of ``_BaseChallengeVerifySerializer`` that implements
+    challenge verification for the Email challenge.
+    """
+
+    #: This serializer represents the ``SMS`` challenge type.
+    challenge_type = EMAIL
 
 
 class BackupCodeSerializer(serializers.ModelSerializer):
