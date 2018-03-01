@@ -6,12 +6,14 @@ from rest_framework.permissions import IsAuthenticated
 
 from deux import strings
 from deux.app_settings import mfa_settings
-from deux.constants import SMS
+from deux.constants import SMS, EMAIL
 from deux.serializers import (
     BackupCodeSerializer,
     MultiFactorAuthSerializer,
     SMSChallengeRequestSerializer,
     SMSChallengeVerifySerializer,
+    EmailChallengeRequestSerializer,
+    EmailChallengeVerifySerializer,
 )
 
 
@@ -90,6 +92,26 @@ class SMSChallengeVerifyDetail(_BaseChallengeView):
     """
     challenge_type = SMS
     serializer_class = SMSChallengeVerifySerializer
+
+
+class EmailChallengeRequestDetail(_BaseChallengeView):
+    """
+    class::SMSChallengeRequestDetail()
+
+    View for requesting SMS challenges to enable MFA through SMS.
+    """
+    challenge_type = EMAIL
+    serializer_class = EmailChallengeRequestSerializer
+
+
+class EmailChallengeVerifyDetail(_BaseChallengeView):
+    """
+    class::SMSChallengeVerifyDetail()
+
+    View for verify SMS challenges to enable MFA through SMS.
+    """
+    challenge_type = EMAIL
+    serializer_class = EmailChallengeVerifySerializer
 
 
 class BackupCodeDetail(MultiFactorAuthMixin, generics.RetrieveAPIView):
