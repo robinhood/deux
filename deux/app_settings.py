@@ -13,10 +13,15 @@ DEFAULTS = {
     "MFA_CODE_NUM_DIGITS": 6,
     "MFA_MODEL": "deux.models.MultiFactorAuth",
     "SEND_MFA_TEXT_FUNC": "deux.notifications.send_mfa_code_text_message",
+    "SEND_MFA_EMAIL_FUNC": "deux.notifications.send_mfa_code_email",
     "STEP_SIZE": 30,
     "TWILIO_ACCOUNT_SID": "",
     "TWILIO_AUTH_TOKEN": "",
     "TWILIO_SMS_POOL_SID": "",
+    "SENDGRID_API_KEY": "",
+    "SENDGRID_TEMPLATE_ID": "",
+    "SENDGRID_SENDER_EMAIL": "",
+    "SENDGRID_MAIL_SUBJECT": "MFA login code",
 }
 
 # List of settings that cannot be empty.
@@ -26,6 +31,7 @@ MANDATORY = ()
 IMPORT_STRINGS = (
     'MFA_MODEL',
     'SEND_MFA_TEXT_FUNC',
+    'SEND_MFA_EMAIL_FUNC',
 )
 
 

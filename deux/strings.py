@@ -28,8 +28,17 @@ INVALID_PHONE_NUMBER_ERROR = _("Please enter a valid phone number.")
 PHONE_NUMBER_NOT_SET_ERROR = _(
     "MFA phone number must be set for this challenge.")
 
+#: Error if an invalid email address is entered.
+INVALID_EMAIL_ADDRESS_ERROR = _("Please enter a valid email address.")
+
 #: Error if SMS fails to send.
 SMS_SEND_ERROR = _("SMS failed to send.")
 
+#: Error if email fails to send.
+EMAIL_SEND_ERROR = _("Email failed to send.")
+
 #: Message body for a MFA code.
 MFA_CODE_TEXT_MESSAGE = _("Two Factor Authentication Code: {code}")
+
+#: Email body
+MFA_CODE_EMAIL_TEXT = _("Two Factor Authentication Code: {code}")
