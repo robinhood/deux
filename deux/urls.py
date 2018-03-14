@@ -5,6 +5,8 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 from deux import views
 
+app_name = 'deux'
+
 urlpatterns = [
     url(r"^$", views.MultiFactorAuthDetail.as_view(),
         name="multi_factor_auth-detail"),
