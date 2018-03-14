@@ -5,6 +5,8 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 from deux.authtoken import views
 
+app_name = 'deux.authtoken'
+
 urlpatterns = [
     url(r"^login/$", views.ObtainMFAAuthToken.as_view(),
         name="login"),
