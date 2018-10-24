@@ -54,7 +54,7 @@ To enable them, add the following configuration to your file :file:`urls.py`:
 
 .. code-block:: python
 
-    url(r"^mfa/", include("deux.urls", namespace="mfa")),
+    url(r"^mfa/", include(("deux.urls", "mfa"), namespace="mfa")),
 
 The library also provides views for authenticating through multifactor
 authentication depending on your authentication protocol.
@@ -64,14 +64,14 @@ authentication depending on your authentication protocol.
     .. code-block:: python
 
         url(r"^mfa/authtoken/", include(
-            "deux.authtoken.urls", namespace="mfa-authtoken:login")),
+            ("deux.authtoken.urls", "mfa-authtoken:login"), namespace="mfa-authtoken:login")),
 
 #. For ``oauth2``, add the following to :file:`urls.py`:
 
     .. code-block:: python
 
         url(r"^mfa/oauth2/", include(
-            "deux.oauth2.urls", namespace="mfa-oauth2:login")),
+            ("deux.oauth2.urls", mfa-oauth2:login), namespace="mfa-oauth2:login")),
 
 .. _settings:
 
