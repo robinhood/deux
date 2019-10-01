@@ -1,7 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
-from twilio.rest import TwilioRestClient
-from twilio.rest.exceptions import TwilioRestException
+from twilio.rest import Client
+from twilio.base.exceptions import TwilioRestException
 
 from deux import strings
 from deux.app_settings import mfa_settings
@@ -26,13 +26,13 @@ def send_mfa_code_text_message(mfa_instance, mfa_code):
 
     sid = mfa_settings.TWILIO_ACCOUNT_SID
     token = mfa_settings.TWILIO_AUTH_TOKEN
-    twilio_num = mfa_settings.TWILIO_SMS_POOL_SID
+    twilio_num = mfa_settings.TWILIO_PHONE_NUMBER
     if not sid or not token or not twilio_num:
         print("Please provide Twilio credentials to send text messages. For "
               "testing purposes, the MFA code is {code}".format(code=mfa_code))
         return
 
-    twilio_client = TwilioRestClient(sid, token)
+    twilio_client = Client(sid, token)
     try:
         twilio_client.messages.create(
             body=strings.MFA_CODE_TEXT_MESSAGE.format(code=mfa_code),

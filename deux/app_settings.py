@@ -11,12 +11,12 @@ USER_SETTINGS = getattr(settings, 'DEUX', None)
 DEFAULTS = {
     "BACKUP_CODE_DIGITS": 12,
     "MFA_CODE_NUM_DIGITS": 6,
+    "STEP_SIZE": 30,
     "MFA_MODEL": "deux.models.MultiFactorAuth",
     "SEND_MFA_TEXT_FUNC": "deux.notifications.send_mfa_code_text_message",
-    "STEP_SIZE": 30,
     "TWILIO_ACCOUNT_SID": "",
     "TWILIO_AUTH_TOKEN": "",
-    "TWILIO_SMS_POOL_SID": "",
+    "TWILIO_PHONE_NUMBER": "",
 }
 
 # List of settings that cannot be empty.
