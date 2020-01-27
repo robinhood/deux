@@ -1,7 +1,18 @@
 from __future__ import absolute_import, unicode_literals
 
-from twilio.rest import TwilioRestClient
-from twilio.rest.exceptions import TwilioRestException
+try:
+    from twilio.rest import Client as TwilioRestClient
+except ImportError:
+    from twilio.rest import TwilioRestClient
+    print("DeprecationWarning: Importing TwilioRestClient from twilio.rest"
+          " is deprecated. Update twilio package to >6.x")
+
+try:
+    from twilio.base.exceptions import TwilioRestException
+except ImportError:
+    from twilio.rest.exceptions import TwilioRestException
+    print("DeprecationWarning: Importing TwilioRestException from twilio.rest"
+          " is deprecated. Update twilio package to >6.x")
 
 from deux import strings
 from deux.app_settings import mfa_settings
