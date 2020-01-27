@@ -6,5 +6,5 @@ from deux import strings
 
 #: Regex validator for phone numbers.
 phone_number_validator = RegexValidator(
-    regex=r"^(\d{7,15})$",
+    regex=r"^\+[1-9]\d{1,14}$",
     message=strings.INVALID_PHONE_NUMBER_ERROR)
