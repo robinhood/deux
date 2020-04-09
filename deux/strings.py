@@ -1,6 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
+from deux.app_settings import mfa_settings
 
 #: Error if user submits both MFA and backup code for authentication.
 BOTH_CODES_ERROR = _(
@@ -32,4 +33,7 @@ PHONE_NUMBER_NOT_SET_ERROR = _(
 SMS_SEND_ERROR = _("SMS failed to send.")
 
 #: Message body for a MFA code.
-MFA_CODE_TEXT_MESSAGE = _("Two Factor Authentication Code: {code}")
+try:
+    MFA_CODE_TEXT_MESSAGE = mfa_settings.MFA_CODE_TEXT_MESSAGE
+except:
+    MFA_CODE_TEXT_MESSAGE = _("Two Factor Authentication Code: {code}")
