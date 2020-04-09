@@ -33,7 +33,4 @@ PHONE_NUMBER_NOT_SET_ERROR = _(
 SMS_SEND_ERROR = _("SMS failed to send.")
 
 #: Message body for a MFA code.
-try:
-    MFA_CODE_TEXT_MESSAGE = mfa_settings.MFA_CODE_TEXT_MESSAGE
-except:
-    MFA_CODE_TEXT_MESSAGE = _("Two Factor Authentication Code: {code}")
+MFA_CODE_TEXT_MESSAGE = mfa_settings.MFA_CODE_TEXT_MESSAGE

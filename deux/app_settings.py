@@ -17,6 +17,7 @@ DEFAULTS = {
     "TWILIO_ACCOUNT_SID": "",
     "TWILIO_AUTH_TOKEN": "",
     "TWILIO_PHONE_NUMBER": "",
+    "MFA_CODE_TEXT_MESSAGE": "Two Factor Authentication Code: {code}"
 }
 
 # List of settings that cannot be empty.
