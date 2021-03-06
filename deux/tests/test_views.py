@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from rest_framework import status
 
 from deux.app_settings import mfa_settings
-from deux.constants import DISABLED, SMS
+from deux.constants import DISABLED, SMS, EMAIL
 from deux.exceptions import FailedChallengeError
 from deux.services import generate_mfa_code
 from deux import strings
@@ -83,6 +83,11 @@ class SMSChallengeRequestViewTest(_BaseMFAViewTest):
             self.url, status.HTTP_400_BAD_REQUEST, user=self.user2,
             data={"phone_number": self.phone_number})
         self.assertEqual(resp.data, {"detail": [strings.ENABLED_ERROR]})
+
+    def test_already_enabled_with_other_method(self):
+        self.mfa_2.enable(EMAIL)
+        self.check_put_response(self.url, status.HTTP_200_OK, user=self.user2,
+                                data={"phone_number": self.phone_number})
 
     def test_bad_phone_numbers(self):
         # No phone number inputted.

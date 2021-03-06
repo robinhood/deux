@@ -30,3 +30,4 @@ cover/
 coverage.*
 htmlcov/
 .vagrant/
+venv/

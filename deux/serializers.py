@@ -83,7 +83,7 @@ class _BaseChallengeRequestSerializer(MultiFactorAuthSerializer):
         :param internal_data: Dictionary of the request data.
         :raises serializers.ValidationError: If MFA is already enabled.
         """
-        if self.instance.enabled:
+        if self.instance.enabled and self.instance.challenge_type == self.challenge_type:
             raise serializers.ValidationError({
                 "detail": strings.ENABLED_ERROR
             })
@@ -133,7 +133,7 @@ class _BaseChallengeVerifySerializer(MultiFactorAuthSerializer):
         :raises serializers.ValidationError: If MFA is already enabled or if
             the inputted MFA code is not valid.
         """
-        if self.instance.enabled:
+        if self.instance.enabled and self.instance.challenge_type == self.challenge_type:
             raise serializers.ValidationError({
                 "detail": strings.ENABLED_ERROR
             })
